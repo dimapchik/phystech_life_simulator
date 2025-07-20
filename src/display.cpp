@@ -26,9 +26,9 @@ std::string bar(double value, std::string color) {
 }
 
 void Display::displayProgress(const Progress& progress) const {
-    std::cout << "theory:    " << bar(progress.theory, Color::green) << " " << progress.theory << '\n'
-              << "practice:  " << bar(progress.practice, Color::cyan) << " " << progress.practice << '\n'
-              << "grade:     " << bar(progress.grade, Color::yellow) << " " << progress.grade << '\n';
+  std::cout << "theory:    " << bar(progress.theory, Color::green) << " " << progress.theory << '\n'
+            << "practice:  " << bar(progress.practice, Color::cyan) << " " << progress.practice << '\n'
+            << "grade:     " << bar(progress.grade, Color::yellow) << " " << progress.grade << '\n';
 }
 
 void Display::displayDayStudy(const Day& day) const {
@@ -96,7 +96,6 @@ void Display::displayItemInformation(const Item& item) const {
               << Color::bold << item.getCost() << " rubles" << Color::reset << '\n';
     std::cout << Color::cyan << "╚═══════════════════════════════════════════════╝" << Color::reset << '\n';
 }
-
 
 void Display::displayInvetory(const Inventory& inventory) const {
     std::cout << Color::yellow << "╔════ Current Inventory ════╗" << Color::reset << '\n';
