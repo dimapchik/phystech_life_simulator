@@ -2,7 +2,7 @@
 
 bool isNumber(const std::string& s) {
     for (char const &ch : s) {
-        if (std::isdigit(ch) == 0) 
+        if (std::isdigit(ch) == 0)
             return false;
     }
     return true;
@@ -81,6 +81,7 @@ void game() {
 
   Shop shop("../data/shop.json");
 
+  system("clear");
   Display display;
   display.displayIntro();
   display.displayHelp();
@@ -88,29 +89,32 @@ void game() {
   std::string request = "";
   while (request != "exit" && request != "E") {
     if (!player.isAlive()) {
-      std::cout << "YOU DIDN'T SURVIVE IN DOLGOPRUDNY TOWN\n";
+      std::cout << Color::red << "YOU DIDN'T SURVIVE IN DOLGOPRUDNY TOWN" << Color::reset << "\n";
       return;
     }
 
-    std::cout << "__________________________________\n";
+    std::cout << Color::cyan << "____________________________________" << Color::reset << "\n";
     std::getline(std::cin, request);
 
     shop.refresh(day.getTime());
     if (request == "attributes" || request == "A") {
       display.displayAttributes(player.getAttributes());
       continue;
-    } 
+    }
     if (request == "see classes" || request == "SC") {
+      system("clear");
       day.updateActions();
       display.displayDayStudy(day);
       continue;
     }
     if (request == "see homework" || request == "SH") {
+      system("clear");
       day.updateActions();
       display.displayDayHomework(day);
       continue;
     }
     if (request == "see chill and job" || request == "SCJ") {
+      system("clear");
       day.updateActions();
       display.displayDayChillWork(day);
       continue;
@@ -157,26 +161,31 @@ void game() {
       continue;
     }
     if (request == "skip") {
+      system("clear");
       day.setTime(Time(day.getTime().day + 1, 0));
       continue;
     }
     if (request == "progress" || request == "P") {
+      system("clear");
       for (auto p : progress) {
-        std::cout << "- - - - - - - - - - - - - - - - - -\n";
+        std::cout << Color::cyan << "======================" << Color::reset << "\n";
         std::cout << p.first << '\n';
         display.displayProgress(*p.second);
       }
       continue;
     }
     if (request == "inventory" || request == "I") {
+      system("clear");
       display.displayInvetory(inventory);
       continue;
     }
     if (request == "shop" || request == "S") {
+      system("clear");
       display.displayShop(shop, player);
       continue;
     }
     if (request == "buy item" || request == "BI") {
+      system("clear");
       std::cout << "What do you want to buy?\n";
       std::string bought_item;
       std::getline(std::cin, bought_item);
@@ -191,6 +200,7 @@ void game() {
       continue;
     }
     if (request == "apply item" || request == "AI") {
+      system("clear");
       std::cout << "What item do you want to apply?\n";
       std::string apply;
       std::getline(std::cin, apply);
@@ -205,6 +215,7 @@ void game() {
       continue;
     }
     if (request == "sell item" || request == "SI") {
+      system("clear");
       std::cout << "What do you want to sell?\n";
       std::string sell_item;
       std::getline(std::cin, sell_item);
@@ -235,6 +246,7 @@ void game() {
       continue;
     }
     if (request == "help" || request == "H") {
+      system("clear");
       display.displayHelp();
       continue;
     }
